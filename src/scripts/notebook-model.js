@@ -8,7 +8,7 @@ export const seedNotebook = () => ({
     notes: { teacher: 'Maak het klein. Kies bij een fout één ding om te verbeteren; de rest mag even wachten.', student: 'De bas apart zingen helpt. Ik wil rustiger blijven wanneer de melodie erbij komt.' },
     goals: [
       {
-        id: 'goal-1', kind: 'piece', piece: 'Pastorale · op gehoor', achieved: false,
+        id: 'goal-1', kind: 'piece', piece: 'Billy Joel · Vienna', achieved: false,
         problem: 'De groove en de baslijn raken uit beeld zodra alles tegelijk klinkt.',
         target: 'Speel de eerste frase met een herkenbare baslijn en melodie.',
         steps: [

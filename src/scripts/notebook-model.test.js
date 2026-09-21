@@ -17,7 +17,7 @@ test('next week carries only open week goals, keeps step progress, and cannot ch
   const before = structuredClone(current);
   let id = 0;
   const next = nextLesson(current, 2, () => `new-${++id}`);
-  assert.deepEqual(next.goals.map(goal => goal.piece), ['Pastorale · op gehoor', 'Harmonie aan de Piano']);
+  assert.deepEqual(next.goals.map(goal => goal.piece), ['Billy Joel · Vienna', 'Harmonie aan de Piano']);
   assert.equal(next.goals[0].steps[0].achieved, true);
   assert.notEqual(next.goals[0].id, current.goals[0].id);
   assert.deepEqual(next.goals[0].notes, { teacher: '', student: '' });
