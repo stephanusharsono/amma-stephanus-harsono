@@ -99,9 +99,9 @@ p { text-wrap: pretty; }
 .experience { padding-block: clamp(3rem, 7vw, 5.5rem); }
 .experience-guide { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 5vw, 3.2rem); padding-bottom: 0; }
 .experience-guide h2 { font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 1.04; max-width: 14ch; }
-/* Kop en standfirst: één regel met twee stemmen, zoals de titel bovenaan. De standfirst staat op de onderlijn van de kop. */
-.experience-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 1rem clamp(2rem, 6vw, 5rem); }
-.experience-lede { font: 400 clamp(1.3rem, 2.3vw, 1.8rem)/1.28 var(--serif); letter-spacing: -.01em; color: var(--ink); padding-bottom: .35rem; }
+/* Kop en standfirst zijn één groep: dicht bij elkaar, op dezelfde onderlijn, links naar rechts te lezen. */
+.experience-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .6rem clamp(1.5rem, 3.2vw, 2.75rem); }
+.experience-lede { font: 400 clamp(1.3rem, 2.3vw, 1.8rem)/1.28 var(--serif); letter-spacing: -.01em; color: var(--ink); padding-bottom: .5rem; }
 .experience-lede span, .experience-lede em { display: block; }
 .experience-lede em { font-style: italic; color: var(--accent); }
 
@@ -249,7 +249,7 @@ p { text-wrap: pretty; }
   .research-inner { gap: 2rem; }
   .experience-guide { grid-template-columns: minmax(0, 1fr); }
   .experience-guide h2 { max-width: none; }
-  .experience-head { grid-template-columns: minmax(0, 1fr); }
+  .experience-head { flex-direction: column; align-items: flex-start; gap: .5rem; }
   .experience-lede { padding-bottom: 0; }
 }
 @media (max-width: 680px) {
