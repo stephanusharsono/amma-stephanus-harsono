@@ -8,6 +8,7 @@ const chapterLinks = [...document.querySelectorAll('[data-chapter]')];
 const headerLinks = [...document.querySelectorAll('.site-header nav a[href^="#"]')];
 const contact = document.querySelector('#contact');
 const guide = document.querySelector('.experience-guide');
+const header = document.querySelector('.site-header');
 const root = document.documentElement;
 const reveals = [...document.querySelectorAll('.scene-figure, .portrait-window, .connection, .book-statement')];
 root.dataset.motion = 'on';
@@ -35,7 +36,7 @@ function update() {
   const phase = inExperience ? active : -1;
   const section = contactRect.top < viewport * .5 ? '#contact' : inExperience ? '#ervaring' : '';
   const heroProgress = clamp(-heroRect.top / Math.max(heroRect.height, 1));
-  const currentProgress = clamp((focalLine - rowRects[active].top) / Math.max(rowRects[active].height, 1));
+  const pageProgress = clamp(scrollY / Math.max(root.scrollHeight - viewport, 1));
 
   root.classList.toggle('has-scrolled', scrollY > 24);
   if (!reduce.matches) {
@@ -46,7 +47,7 @@ function update() {
     }
   }
   if (portrait) portrait.style.transform = reduce.matches ? '' : `scale(${1.035 - heroProgress * .035}) translateY(${-heroProgress * 12}px)`;
-  guide.style.setProperty('--chapter-progress', reduce.matches ? '1' : String((active + currentProgress) / rows.length));
+  header.style.setProperty('--page-progress', pageProgress.toFixed(4));
   if (phase !== lastChapter) {
     rows.forEach((row, i) => row.classList.toggle('is-active', i === phase));
     chapterLinks.forEach((link, i) => {
