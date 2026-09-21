@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import { aanhef, alineas, afsluiting, naam } from '../content/brief.js';
+import { briefPagina, siteUrl, briefBeschikbaar, briefBestand, documenten, ervaring } from '../content/site.js';
+// De scènes op de voorpagina wijzen hierheen; elke gemarkeerde alinea krijgt de weg terug.
+const bronnen = Object.fromEntries(ervaring.onderdelen.filter((o) => o.briefAnker).map((o) => [o.briefAnker, o]));
+const link = siteUrl ? `: ${siteUrl}` : '';
+const tekst = alineas.map((a) => a.replace('{{LINK}}', link));
+---
+<Base huidig="brief" licht={true} title={`${briefPagina.titel} — Stephanus Harsono`}>
+  <div class="brief-kop">
+    <div>
+      <a class="terug" href="/">← {briefPagina.terug}</a>
+      <div class="brief-acties">
+        {briefBeschikbaar && <a class="pdf-link" href={briefBestand} download>{documenten.brief}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m-5-5 5 5 5-5M5 20h14"/></svg></a>}
+        <button class="printknop" type="button" id="print">{briefPagina.printKnop}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="brief">
+    {/* Zelfde opbouw als de verstuurde brief: kop met naam en soort, regel, onderwerp. */}
+    <article class="brief-blad" aria-label={briefPagina.titel}>
+      <p class="printkop">{briefPagina.printKop}</p>
+      <header class="brief-masthead">
+        <h1>{naam}</h1>
+        <span>{briefPagina.soort}</span>
+      </header>
+      <p class="brief-onderwerp">{briefPagina.onderwerp}</p>
+      <p class="brief-aanhef">{aanhef}</p>
+      {tekst.map((t, i) => {
+        const bron = bronnen[`alinea-${i}`];
+        return (
+          <>
+            <p id={`alinea-${i}`} tabindex="-1">{t}</p>
+            {bron && <a class="terug-naar" href={`/#${bron.id}`}>← Terug naar {bron.label}</a>}
+          </>
+        );
+      })}
+      <p class="afsluiting">{afsluiting}</p>
+      <p class="naam-brief">{naam}</p>
+    </article>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var b = document.getElementById('print');
+      if (b) b.addEventListener('click', function () { window.print(); });
+
+      // :target alleen is hier niet betrouwbaar: bij een view transition wordt de
+      // CSS-animatie ingeslikt, en tweemaal dezelfde link aanklikken vuurt hem niet opnieuw.
+      // Daarom markeren we zelf, bij elke navigatie, en laten we :target als vangnet staan.
+      var stil = matchMedia('(prefers-reduced-motion: reduce)');
+      function markeer() {
+        var id = location.hash.slice(1);
+        if (!id) return;
+        var el = document.getElementById(id);
+        if (!el || !el.closest('.brief-blad')) return;
+        document.querySelectorAll('.gemarkeerd').forEach(function (x) { x.classList.remove('gemarkeerd'); });
+        el.classList.remove('flits');
+        void el.offsetWidth;                       // forceer herstart van de flits
+        el.classList.add('gemarkeerd');
+        if (!stil.matches) el.classList.add('flits');
+        el.scrollIntoView({ block: 'center', behavior: stil.matches ? 'auto' : 'smooth' });
+      }
+      addEventListener('hashchange', markeer);
+      addEventListener('astro:page-load', markeer);
+      if (document.readyState !== 'loading') markeer();
+      else addEventListener('DOMContentLoaded', markeer);
+    })();
+  </script>
+</Base>

@@ -1,0 +1,15 @@
+---
+// Twee stromen komen samen. De lijn is geen plaatje naast de tekst maar constructie:
+// hij loopt van rand tot rand en zakt op het snijpunt door in de regel boven de eerste scène.
+// Beide takken zijn exacte spiegels; de kromming is één vloeiende bocht zonder knik.
+const { compact = false } = Astro.props;
+---
+<div class:list={['connection', { compact }]} role="img" aria-label="Het CvA en de UvA komen samen bij AMMA">
+  <div class="connection-institutions" aria-hidden="true"><span>CvA</span><span>UvA</span></div>
+  <svg viewBox="0 0 1000 96" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path class="connection-cva" pathLength="1" d="M0 6 C 320 6, 400 82, 500 82" />
+    <path class="connection-uva" pathLength="1" d="M1000 6 C 680 6, 600 82, 500 82" />
+    <path class="connection-stem" pathLength="1" d="M500 82 V 96" />
+  </svg>
+  <span class="connection-name" aria-hidden="true">AMMA</span>
+</div>

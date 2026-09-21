@@ -1,0 +1,54 @@
+---
+import '../styles/notebook.css';
+---
+<section class="notebook-section container" id="studentenschrift" aria-labelledby="notebook-title">
+  <div class="notebook-intro">
+    <h2 id="notebook-title">Van deze les<br /><em>naar volgende week.</em></h2>
+    <p>Mijn studentenschrift als webapp: een eerste proef van het idee uit mijn brief. Twee stukken, één oefening en concrete stappen om verder te komen.</p>
+  </div>
+  <details class="notebook-disclosure">
+    <summary><span>Probeer het studentenschrift</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+    <div class="notebook" data-notebook>
+      <div class="nb-notice"><strong>Sandbox · fictieve student en lesinhoud</strong><span>Je probeert beide rollen zelf uit. Wijzigingen blijven in deze browser en worden niet gedeeld.</span></div>
+      <noscript><p>Schakel JavaScript in om doelen af te vinken en opmerkingen te schrijven.</p></noscript>
+      <div class="nb-app" hidden>
+        <header class="nb-toolbar">
+          <div><h3>Studentenschrift</h3><p>Voorbeeldstudent · piano</p></div>
+          <label>Bekijk als<select data-role aria-label="Bekijk als"><option value="teacher">Docent</option><option value="student">Student</option></select></label>
+          <label>Les<select data-lesson aria-label="Les"></select></label>
+        </header>
+        <nav class="nb-views" aria-label="Weergave studentenschrift"><button type="button" data-view="week" aria-pressed="true">Weekplan</button><button type="button" data-view="targets" aria-pressed="false">Weekdoelen</button><button type="button" data-view="skills" aria-pressed="false">Vaardigheden</button></nav>
+        <p class="nb-history" data-history hidden>Je kijkt terug op een afgesloten les. De aantekeningen blijven hier bewaard.</p>
+        <div class="nb-workspace">
+          <div class="nb-goals-panel">
+            <div class="nb-section-heading"><h4 data-view-title>Deze week aan de piano</h4><span data-progress></span></div>
+            <p class="nb-hint" data-role-hint></p>
+            <div data-goals></div>
+            <p class="nb-empty" data-empty hidden>Er staat nog geen werk klaar. Voeg als docent een stuk of oefening met een weekdoel toe.</p>
+            <details class="nb-add" data-add-panel>
+              <summary>Stuk of oefening toevoegen</summary>
+              <form data-add-form>
+                <label for="nb-piece">Stuk of oefening</label><input id="nb-piece" name="piece" maxlength="100" required placeholder="Bijvoorbeeld: Bach · Invention nr. 1" />
+                <div class="nb-form-pair"><label>Soort<select name="kind"><option value="piece">Stuk</option><option value="exercise">Oefening</option></select></label><label>Vaardigheid<select name="skill" data-add-skill></select></label></div>
+                <label for="nb-problem">Waar loopt de student tegenaan?</label><textarea id="nb-problem" name="problem" rows="2" maxlength="500" placeholder="Bijvoorbeeld: de bas verdwijnt zodra de melodie erbij komt."></textarea>
+                <label for="nb-target">Concreet doel voor volgende week</label><textarea id="nb-target" name="target" rows="2" maxlength="400" required placeholder="Wat wil je kunnen, en waaraan merk je dat?"></textarea>
+                <label for="nb-steps">Oefenstappen · één stap per regel</label><textarea id="nb-steps" name="steps" rows="4" maxlength="4000" required placeholder="Luister eerst naar de bas.&#10;Zing de baslijn uit het hoofd.&#10;Speel de baslijn op de piano."></textarea>
+                <button class="nb-button" type="submit">Aan weekplan toevoegen</button>
+                <p class="nb-error" data-form-error role="alert" hidden></p>
+              </form>
+            </details>
+          </div>
+          <aside class="nb-notes-panel" aria-label="Aantekeningen bij de les">
+            <label class="nb-notes-label" for="nb-notes" data-notes-label>Lesnotities</label>
+            <textarea id="nb-notes" data-notes rows="5" maxlength="2000" placeholder="Wat viel op? Wat helpt bij het oefenen?"></textarea>
+            <div class="nb-other-note"><h4 data-other-label></h4><p data-other-note></p></div>
+            <div class="nb-next" data-next-panel><h4>De volgende les</h4><p data-next-hint></p><button class="nb-button" type="button" data-next>Volgende les voorbereiden <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></button></div>
+          </aside>
+        </div>
+        <footer class="nb-footer"><p data-save role="status" aria-live="polite"></p><button class="nb-text-button" type="button" data-reset>Herstel voorbeeld</button></footer>
+        <div class="nb-reset-confirm" data-reset-confirm hidden><p>Je wijzigingen in deze proef verdwijnen. Het oorspronkelijke voorbeeld komt terug.</p><button class="nb-button" type="button" data-confirm-reset>Ja, herstel het voorbeeld</button><button class="nb-text-button" type="button" data-cancel-reset>Annuleren</button></div>
+      </div>
+    </div>
+  </details>
+</section>
+<script>import '../scripts/notebook.js';</script>

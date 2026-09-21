@@ -1,0 +1,299 @@
+/*
+  Twee velden, één metaal.
+  Veld    AMMA-indigo #24114C   (musicologyandmusicianship.nl)
+  Papier  #F4F2ED               (studieschrift, brief, print)
+  Metaal  CvA-oker #CF8D3E op donker, #7A5218 op licht
+  Eén accent. Geen radius, geen schaduwen, geen kaders: diepte komt uit toon, schaal en 1px-lijnen.
+  Tokennamen zijn bewust ongewijzigd, zodat notebook.css meeverft.
+*/
+:root {
+  /* lichte vlakken */
+  --paper: #f4f2ed;
+  --ink: #1c1733;
+  --muted: #6b6478;
+  --rule: #d5d2dc;
+  --sage: #eae6f0;
+  --accent: #7a5218;
+  --blue: #7a5218;   /* linkkleur op licht: oker, geen los blauw */
+  --leaf: #7a5218;
+  --quote: #24114c;
+  /* donkere vlakken */
+  --field: #24114c;
+  --field-deep: #170b31;
+  --metal: #cf8d3e;
+  --mist: #cfc9da;
+  --rule-dark: rgba(255, 255, 255, .18);
+  --indigo: #24114c;
+
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --sans: 'Avenir Next', Avenir, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --gutter: clamp(1.25rem, 5.5vw, 5.5rem);
+  --draw: 1;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.7 var(--sans); overflow-x: hidden; caret-color: var(--metal); }
+::selection { background: #e6d3b4; color: var(--ink); }
+html { scrollbar-color: #b9b3c4 var(--paper); }
+a { color: var(--accent); text-underline-offset: .24em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+h1, h2, h3, p, figure, blockquote { margin: 0; }
+h1, h2, h3 { font-weight: 400; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--serif); letter-spacing: -.028em; }
+p { text-wrap: pretty; }
+.container { width: min(100% - var(--gutter) * 2, 1240px); margin-inline: auto; }
+.skip { position: fixed; left: 1rem; top: -8rem; z-index: 40; padding: .8rem 1rem; background: var(--ink); color: var(--paper); font-weight: 600; }
+
+/* ---------- banden: de enige twee plekken waar indigo het vlak vult ---------- */
+.band { background: var(--field); color: #fff; }
+.band h1, .band h2, .band h3 { color: #fff; }
+.band a { color: var(--metal); }
+.band a.primary-link { color: var(--field-deep); }  /* anders wint .band a en wordt de knoptekst oker-op-oker */
+.band a.primary-link:hover { color: var(--metal); }
+.band :focus-visible { outline-color: var(--metal); }
+.hero-band { padding-block: clamp(2.6rem, 6vw, 5rem); }
+.skip:focus { top: .8rem; }
+
+/* ---------- header ---------- */
+.site-header { position: sticky; top: 0; z-index: 30; background: var(--paper); border-bottom: 1px solid transparent; transition: border-color .2s; }
+.header-inner { display: flex; align-items: center; gap: 2rem; min-height: 74px; }
+.has-scrolled .site-header { border-bottom-color: var(--rule); }
+
+
+.brand { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font: 400 1.5rem/1 var(--serif); letter-spacing: .12em; text-decoration: none; padding-block: .65rem; view-transition-name: signature; }
+.brand span { color: var(--metal); }
+.application { color: var(--muted); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; }
+.site-header nav { margin-left: auto; }
+.site-header nav ul { display: flex; gap: 1.7rem; list-style: none; margin: 0; padding: 0; }
+.site-header nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding-block: .65rem; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.site-header nav a:hover, .site-header nav a[aria-current] { color: var(--ink); border-color: var(--accent); }
+
+/* ---------- hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 30%); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
+.hero h1 { font-size: clamp(2.9rem, 7vw, 6.4rem); line-height: .99; }
+.hero h1 > * { display: block; }
+.hero h1 em { font-style: italic; font-weight: 400; color: var(--metal); }
+.hero-intro { max-width: 44ch; margin-top: 2rem; font-size: 1.05rem; line-height: 1.72; color: #ece9f2; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem 2.5rem; margin-top: 2.4rem; }
+.primary-link { display: inline-flex; min-height: 54px; gap: 1.5rem; align-items: center; justify-content: space-between; padding: .9rem 1.4rem; background: var(--metal); color: var(--field-deep); border: 1px solid var(--metal); font-size: .9rem; font-weight: 600; text-decoration: none; transition: background .2s, color .2s; }
+.primary-link:hover { background: transparent; color: var(--metal); text-decoration: none; }
+.primary-link svg, .text-link svg { width: 20px; height: 20px; flex: 0 0 auto; transition: transform .2s ease-out; }
+.primary-link:hover svg { transform: translateY(3px); }
+.text-link { display: inline-flex; min-height: 44px; gap: .6rem; align-items: center; font-size: .86rem; padding-block: .65rem; font-weight: 600; }
+.text-link:hover svg { transform: translateX(3px); }
+
+.portrait { padding-top: 0; }
+.portrait-window { overflow: hidden; aspect-ratio: 3 / 4; background: var(--field-deep); }
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(.86) contrast(1.02); }
+.portrait figcaption { display: flex; flex-direction: column; gap: .2rem; padding-top: 1rem; border-top: 1px solid var(--rule-dark); margin-top: 1rem; }
+.portrait strong { font: 400 1.15rem/1.4 var(--serif); }
+.portrait figcaption span { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--mist); }
+
+.dateline { display: flex; flex-wrap: wrap; gap: .3rem 2.2rem; margin-top: clamp(2rem, 4vw, 3rem); padding-top: 1.1rem; border-top: 1px solid var(--rule-dark); font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; color: var(--mist); }
+.dateline .proc { color: var(--metal); }
+
+/* ---------- ervaring: scènes ---------- */
+.experience { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.experience-guide { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 5vw, 3.2rem); padding-bottom: 0; }
+.experience-guide h2 { font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 1.04; max-width: 14ch; }
+
+.chapter-nav { display: flex; flex-wrap: wrap; gap: 0 2.2rem; border-top: 1px solid var(--rule); padding-top: .6rem; }
+.chapter-nav a { display: inline-flex; align-items: center; gap: .7rem; min-height: 44px; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+.chapter-marker { width: 26px; height: 1px; background: var(--accent); transform: scaleX(.2); transform-origin: left; transition: transform .35s var(--ease-out); }
+.chapter-nav a:hover, .chapter-nav a[aria-current] { color: var(--ink); }
+.chapter-nav a:hover .chapter-marker, .chapter-nav a[aria-current] .chapter-marker { transform: scaleX(1); }
+.experience-guide > .text-link { display: none; }
+
+.experience-list > .experience-row:first-child { border-top: 0; }
+.experience-row { position: relative; display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 1.5rem clamp(2rem, 6vw, 5.5rem); padding-block: clamp(2.4rem, 5.5vw, 4rem); border-top: 1px solid var(--rule); }
+.experience-row::before { content: ''; position: absolute; top: -1px; left: 0; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease-out); }
+.experience-row.is-active::before { transform: scaleX(1); }
+.scene-label { font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+.scene-figure { margin-top: 1rem; font: 400 clamp(2.6rem, 5vw, 4.1rem)/1 var(--serif); letter-spacing: -.05em; color: var(--accent); }
+.scene-figure span { display: block; margin-top: .75rem; font: 400 .8rem/1.45 var(--sans); letter-spacing: 0; color: var(--muted); max-width: 16ch; }
+.scene-bron { margin-top: 1.4rem; }
+.brieflink { display: inline-flex; align-items: center; gap: .5rem; font-size: .88rem; font-weight: 600; color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-bottom: .15rem; transition: border-color .2s; }
+.brieflink:hover { border-bottom-color: var(--accent); }
+.brieflink svg { width: 17px; height: 17px; transition: transform .2s ease-out; }
+.brieflink:hover svg { transform: translateX(3px); }
+.experience-row h3 { font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: 1.14; max-width: 22ch; margin-bottom: 1.1rem; }
+.experience-row p { font-size: 1.02rem; max-width: 62ch; }
+.experience-row .text-link { margin-top: .4rem; }
+
+/* ---------- onderzoek ---------- */
+.research { padding-block: clamp(3rem, 7vw, 5.5rem); border-top: 1px solid var(--rule); }
+.research-inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.35fr); align-items: end; gap: clamp(2.5rem, 8vw, 7rem); }
+.research h2 { font-size: clamp(1.8rem, 2.9vw, 2.4rem); line-height: 1.16; max-width: 18ch; }
+.research-copy > p { font-size: .96rem; color: var(--muted); margin-top: 1.2rem; max-width: 43ch; }
+.book-statement { font: italic 400 clamp(2.8rem, 5.6vw, 5.2rem)/1.04 var(--serif); letter-spacing: -.03em; text-wrap: balance; color: var(--accent); }
+.book-context { color: var(--muted); font-size: .9rem; max-width: 38ch; margin-top: 1.6rem; }
+
+/* ---------- contact ---------- */
+.contact { padding-block: clamp(3rem, 7vw, 5rem); }
+.contact-inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5.5rem); align-items: center; }
+.contact h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); line-height: 1.16; max-width: 22ch; }
+.contact p { font-size: .96rem; color: var(--mist); margin-top: 1.1rem; max-width: 55ch; }
+.contact-links { display: flex; align-items: flex-start; flex-direction: column; gap: .2rem; }
+.contact-links > a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; padding-block: .4rem; font-size: 1rem; }
+.contact-links .text-link { margin-top: .6rem; font-size: .85rem; }
+.contact-links > .primary-link { margin-bottom: 1rem; }
+.contact-links > .primary-link:hover svg { transform: translateX(3px); }
+.site-footer { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.6rem 2.4rem; color: var(--muted); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---------- motief: twee stromen, één samenkomst ----------
+   Van rand tot rand, exact gespiegeld, en op het snijpunt zakt de lijn
+   door in de regel boven de eerste scène. Geen ring, geen losse stomp. */
+.connection { width: 100%; }
+.connection-institutions { display: flex; justify-content: space-between; font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); padding-bottom: .5rem; }
+.connection svg { display: block; width: 100%; height: clamp(3.6rem, 7vw, 6rem); overflow: visible; }
+.connection path { fill: none; vector-effect: non-scaling-stroke; stroke-width: 1.25; stroke-linecap: round; }
+.connection-cva { stroke: var(--accent); }
+.connection-uva { stroke: var(--muted); stroke-opacity: .7; }
+.connection-stem { stroke: var(--accent); }
+.connection-name { display: block; text-align: center; margin-top: .15rem; font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+
+/* Ankers onthullen zich bij binnenkomst; standaard staan ze er gewoon. */
+.js .scene-figure, .js .portrait-window { clip-path: inset(0 0 100% 0); transition: clip-path .85s var(--ease-out); }
+.js .scene-figure.is-in, .js .portrait-window.is-in { clip-path: inset(0 0 0 0); }
+
+/* ---------- brief: papier ---------- */
+.licht { background: var(--paper); color: var(--ink); }
+.licht .site-header, .licht .site-header::before { background: var(--paper); }
+.licht .has-scrolled .site-header::before, .licht .site-footer { border-color: var(--rule); }
+.licht .brand { color: var(--ink); }
+.licht .brand span { color: var(--accent); }
+.licht .application, .licht .site-header nav a, .licht .site-footer { color: var(--muted); }
+.licht .site-header nav a:hover, .licht .site-header nav a[aria-current] { color: var(--ink); border-color: var(--accent); }
+.licht a { color: var(--accent); }
+.brief-kop { padding: clamp(2rem, 5vw, 3.2rem) var(--gutter) 0; }
+.brief-kop > div { max-width: min(41rem, 70ch); margin-inline: auto; }
+.brief-acties { display: flex; align-items: center; flex-wrap: wrap; gap: 0 1.6rem; }
+.terug { font-size: .74rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 600; }
+.brief-kop h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.08; margin: 1.5rem 0 .65rem; }
+.brief-kop .sub { font-size: .74rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+.printknop { margin-top: 1.4rem; background: transparent; border: 0; border-bottom: 1px solid var(--rule); color: var(--accent); font: 600 .95rem var(--sans); padding: .8rem 0; cursor: pointer; }
+.printknop:hover { border-color: var(--accent); }
+.brief { padding: 1.5rem var(--gutter) 4.5rem; }
+/* De webbrief volgt de verstuurde brief: schreefletter, smalle regel, kop met naam en onderwerp. */
+.brief-blad {
+  max-width: min(41rem, 70ch); margin-inline: auto; background: #fff;
+  padding: clamp(2rem, 4.5vw, 3.4rem) clamp(1.6rem, 4vw, 3.4rem) clamp(2.4rem, 5vw, 3.8rem);
+  font-family: var(--serif); font-size: 1.16rem; line-height: 1.62; color: var(--ink);
+}
+.brief-masthead { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--quote); padding-bottom: .5rem; }
+.brief-masthead h1 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.1; color: var(--quote); }
+.brief-masthead span { font-family: var(--sans); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.brief-onderwerp { margin: 1.1rem 0 1.6rem; font-weight: 600; color: var(--quote); font-size: 1.04rem; }
+.brief-aanhef { margin-bottom: 1rem; }
+.brief-blad p { margin-bottom: .95rem; }
+.brief .afsluiting { margin-top: 1.9rem; }
+.brief .naam-brief { font-size: 1.5rem; margin-top: 1.1rem; color: var(--quote); }
+
+/* Aangeklikte passage krijgt even een markeerstift en zakt dan terug. */
+.brief-blad p[id] { scroll-margin-top: 7rem; border-radius: 2px; transition: background .5s ease, box-shadow .5s ease; }
+.brief-blad p[id]:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+/* Blijvend merkteken op de aangeklikte passage. :target is het vangnet zonder JS. */
+.brief-blad p[id].gemarkeerd,
+.brief-blad p[id]:target { background: rgba(207, 141, 62, .13); box-shadow: 0 0 0 .4em rgba(207, 141, 62, .13); }
+/* Korte flits bij aankomst, ook als je dezelfde link nog eens aanklikt. */
+.brief-blad p[id].flits { animation: markeer 2.4s ease-out; }
+
+/* De weg terug naar de scène waar je vandaan kwam. */
+.terug-naar {
+  display: none; margin: -.2rem 0 1.1rem; font-family: var(--sans); font-size: .82rem; font-weight: 600;
+  color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding-bottom: .1rem; width: fit-content;
+}
+.terug-naar:hover { border-bottom-color: var(--accent); }
+.brief-blad p[id].gemarkeerd + .terug-naar,
+.brief-blad p[id]:target + .terug-naar { display: inline-flex; }
+@keyframes markeer {
+  0%, 40% { background: rgba(207, 141, 62, .34); box-shadow: 0 0 0 .4em rgba(207, 141, 62, .34); }
+  100% { background: rgba(207, 141, 62, .13); box-shadow: 0 0 0 .4em rgba(207, 141, 62, .13); }
+}
+.printkop { display: none; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr) 240px; }
+  .research-inner { gap: 2rem; }
+  .experience-guide { grid-template-columns: minmax(0, 1fr); }
+  .experience-guide h2 { max-width: none; }
+}
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+  .header-inner { flex-wrap: wrap; gap: .15rem 1rem; min-height: 0; padding-block: 1rem .7rem; }
+  .brand { font-size: 1.35rem; }
+  .application { margin-left: auto; font-size: .64rem; }
+  .site-header nav { flex-basis: 100%; margin: 0; }
+  .site-header nav ul { gap: 1.6rem; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; padding-block: 2.4rem 3rem; }
+  .hero h1 { font-size: clamp(2.4rem, 10vw, 3.6rem); }
+  .hero-intro { margin-top: 1.3rem; font-size: 1rem; }
+  .portrait { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 1.2rem; align-items: center; }
+  .portrait-window { aspect-ratio: 4 / 5; }
+  .portrait figcaption { padding-top: 0; border: 0; margin: 0; }
+  .experience-row { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+  .connection svg { height: 3.2rem; }
+  .connection-institutions, .connection-name { font-size: .66rem; }
+  .scene-figure { margin-top: .4rem; font-size: clamp(2.4rem, 13vw, 3.4rem); }
+  .scene-figure span { max-width: none; }
+  .experience-row h3 { max-width: none; }
+  .research-inner, .contact-inner { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .bookshelf { grid-row: 1; }
+  .chapter-nav { gap: 0 1.6rem; }
+  .site-footer { flex-direction: column; gap: .2rem; }
+}
+
+@view-transition { navigation: auto; }
+@keyframes page-enter { from { opacity: 0; transform: translateY(8px); } }
+@keyframes page-leave { to { opacity: 0; } }
+::view-transition-old(root) { animation: page-leave 100ms ease-out both; }
+::view-transition-new(root) { animation: page-enter 250ms var(--ease-out) both; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  .js .scene-figure, .js .portrait-window { clip-path: none !important; }
+  .experience-row::before { transform: scaleX(1) !important; }
+  .brief-blad p[id].gemarkeerd, .brief-blad p[id]:target { background: rgba(207, 141, 62, .2); box-shadow: 0 0 0 .4em rgba(207, 141, 62, .2); }
+}
+@media print {
+  @page { size: A4; margin: 20mm; }
+  html, body, .band { background: #fff !important; color: #000 !important; font-size: 11pt; }
+  .site-header, .site-footer, .skip, .brief-kop, .printknop { display: none !important; }
+  .js .scene-figure, .js .portrait-window { clip-path: none !important; }
+  .printkop { display: block; font: 600 11pt var(--serif); margin-bottom: 16pt; }
+  .brief { padding: 0; }
+  .brief-blad { max-width: none; font-size: 11pt; line-height: 1.5; padding: 0; background: none; }
+  .brief-blad p[id].gemarkeerd, .brief-blad p[id]:target { animation: none; background: none; box-shadow: none; }
+  .terug-naar { display: none !important; }
+  .brief-acties { display: none !important; }
+  .brief-blad p { orphans: 3; widows: 3; margin-bottom: 9pt; }
+  .brief .naam-brief { font-size: 14pt; }
+  a { color: #000; }
+}
+
+/* ---------- studentenschrift ----------
+   Het schrift is een lichte werkbank op de donkere pagina: een gereedschap,
+   geen verhaal. Alleen wat op het donkere vlak zelf staat, wordt bijgekleurd. */
+.notebook-section { border-top: 1px solid var(--rule); padding-block: clamp(2.8rem, 6vw, 4.5rem); }
+.notebook-intro h2 em { color: var(--accent); font-style: italic; }
+.notebook-intro > p { color: var(--muted); }
+/* Alles binnen het schrift erft inkt: losse panelen mogen nooit van de paginakleur afhangen. */
+.notebook { color: var(--ink); background: #fff; border-color: var(--rule); }
+.notebook h3, .notebook h4, .notebook h5, .notebook strong, .notebook label, .notebook li { color: var(--ink); }
+.notebook-disclosure > summary { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.notebook-disclosure > summary:hover { background: #2b2447; }
+
+/* ---------- downloads ---------- */
+.downloads { margin-top: 1.4rem; padding-top: 1.1rem; border-top: 1px solid var(--rule-dark); width: 100%; }
+.downloads-label { font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--mist); margin-bottom: .3rem; }
+.downloads a { display: inline-flex; align-items: center; gap: .55rem; min-height: 40px; font-size: .92rem; }
+.downloads a + a { margin-left: 1.6rem; }
+.downloads svg { width: 17px; height: 17px; transition: transform .2s ease-out; }
+.downloads a:hover svg { transform: translateY(2px); }
+.pdf-link { display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.4rem; margin-right: 1.6rem; font-size: .92rem; font-weight: 600; }
+.pdf-link svg { width: 17px; height: 17px; }

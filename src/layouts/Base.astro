@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import { meta, hero, cvBeschikbaar, cvBestand, voet } from '../content/site.js';
+const { title = meta.titel, description = meta.beschrijving, huidig = 'home', licht = false } = Astro.props;
+const p = huidig === 'brief' ? '/' : '';
+const nav = [
+  { href: `${p}#ervaring`, label: 'Ervaring' },
+  ...(cvBeschikbaar && cvBestand ? [{ href: cvBestand, label: 'Cv' }] : []),
+  { href: '/brief', label: 'Brief', actief: huidig === 'brief' },
+  { href: `${p}#contact`, label: 'Contact' },
+];
+---
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#f4f2ed" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f2ed'/%3E%3Cpath d='M8 6v20M24 6v20M8 16h16' stroke='%237a5218' stroke-width='2'/%3E%3C/svg%3E" />
+    <script is:inline>
+      // Ankers starten pas verborgen wanneer JS echt draait. Loopt motion.js vast,
+      // dan valt de klasse binnen 2,5 s weg en staat alles er alsnog gewoon.
+      (function () {
+        var r = document.documentElement;
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        r.classList.add('js');
+        setTimeout(function () { if (!r.dataset.motion) r.classList.remove('js'); }, 2500);
+      })();
+    </script>
+  </head>
+  <body class={licht ? 'licht' : ''}>
+    <a class="skip" href="#inhoud">Naar de inhoud</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Stephanus Harsono — overzicht">SH<span aria-hidden="true">.</span></a>
+        <p class="application">{hero.procedure}</p>
+        <nav aria-label="Hoofdnavigatie"><ul>{nav.map((n) => (
+          <li><a href={n.href} aria-current={n.actief ? 'page' : undefined}>{n.label}</a></li>
+        ))}</ul></nav>
+      </div>
+    </header>
+    <main id="inhoud" tabindex="-1"><slot /></main>
+    <footer class="site-footer container"><span>{voet.naam}</span><span>{voet.plaats}</span></footer>
+  </body>
+</html>
