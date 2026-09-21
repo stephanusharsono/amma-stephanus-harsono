@@ -32,7 +32,7 @@ export const hero = {
   titel: ['Twee instellingen.', 'Eén aanspreekpunt.'],
   introductie: 'Ik help studenten vooruit als docent en correpetitor aan het CvA. Bij AMMA wil ik de praktische zaken tussen CvA en UvA regelen. Zodat studenten ruimte hebben voor de inhoud.',
   procedure: 'Interesse in Coördinator AMMA',
-  rol: 'Docent · Correpetitor · AR/OC',
+  rol: 'Docent · Correpetitor · Voorzitter AR/OC',
   actie: 'Ontdek mijn aanpak',
 };
 
@@ -73,7 +73,7 @@ export const ervaring = {
       briefAnker: 'alinea-4',
       briefLink: 'Lees de passage over de moduleherziening',
       anker: '19 → 1',
-      ankerToelichting: 'docenten, één eindversie',
+      ankerToelichting: '19 docenten, 1 module',
       titel: 'Negentien docenten. Eén gedragen module.',
       tekst: 'Ik leidde de herziening van de hoofdinstrumentmodule. Voor de overgangstentamens stem ik af met het studiesecretariaat.',
     },
