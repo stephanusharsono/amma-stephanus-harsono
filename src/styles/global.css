@@ -118,8 +118,9 @@ p { text-wrap: pretty; }
 .experience-row::before { content: ''; position: absolute; top: -1px; left: 0; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease-out); }
 .experience-row.is-active::before { transform: scaleX(1); }
 .experience-row .scene-label { font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
-.experience-row .scene-figure { margin-top: 1rem; font: 400 clamp(2.1rem, 3.3vw, 3.2rem)/1 var(--serif); letter-spacing: -.05em; color: var(--accent); white-space: nowrap; }
-.scene-figure span { display: block; margin-top: .75rem; font: 400 .8rem/1.45 var(--sans); letter-spacing: 0; color: var(--muted); max-width: 16ch; white-space: normal; }
+/* De cijfers in de linkerkolom zijn bewust klein: bewijs in de marge, geen blikvanger. */
+.experience-row .scene-figure { margin-top: 1rem; font: 400 1.02rem/1 var(--serif); letter-spacing: -.05em; color: var(--accent); }
+.scene-figure span { display: block; margin-top: .75rem; font: 400 .8rem/1.45 var(--sans); letter-spacing: 0; color: var(--muted); max-width: 16ch; }
 .scene-bron { margin-top: 1.4rem; }
 .brieflink { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; font-size: .88rem; font-weight: 600; color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .35em; text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent); transition: text-decoration-color .2s; }
 .brieflink:hover { text-decoration-color: var(--accent); }
@@ -273,7 +274,7 @@ p { text-wrap: pretty; }
   .experience-row { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
   .connection svg { height: 3.2rem; }
   .connection-institutions, .connection-name { font-size: .66rem; }
-  .experience-row .scene-figure { margin-top: .4rem; font-size: clamp(2.4rem, 13vw, 3.4rem); }
+  .experience-row .scene-figure { margin-top: .4rem; }
   .scene-figure span { max-width: none; }
   .experience-row h3 { max-width: none; }
   .research-inner, .contact-inner { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
