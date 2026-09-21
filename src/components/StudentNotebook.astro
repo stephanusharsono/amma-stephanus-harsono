@@ -9,12 +9,19 @@ import '../styles/notebook.css';
   <details class="notebook-disclosure">
     <summary><span>Probeer het studentenschrift</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
     <div class="notebook" data-notebook>
-      <div class="nb-notice"><strong>Proefversie · fictieve student en lesinhoud</strong><span>Je kunt als docent en als student meekijken. Wijzigingen blijven in deze browser en worden niet gedeeld.</span></div>
+      <div class="nb-notice">
+        <p><strong>Proefversie</strong> · fictieve student en lesinhoud · alles blijft in je eigen browser</p>
+        <ol class="nb-guide" aria-label="Zo probeer je het in drie stappen">
+          <li><b>1</b> Vink een oefenstap af</li>
+          <li><b>2</b> Zet het weekdoel op behaald</li>
+          <li><b>3</b> Bereid de volgende les voor</li>
+        </ol>
+      </div>
       <noscript><p>Schakel JavaScript in om doelen af te vinken en opmerkingen te schrijven.</p></noscript>
       <div class="nb-app" hidden>
         <header class="nb-toolbar">
           <div><h3>Studentenschrift</h3><p>Voorbeeldstudent · piano</p></div>
-          <label>Bekijk als<select data-role aria-label="Bekijk als"><option value="teacher">Docent</option><option value="student">Student</option></select></label>
+          <div class="nb-roles" role="group" aria-labelledby="nb-roles-label"><span id="nb-roles-label">Bekijk als</span><div><button type="button" data-role-btn="teacher" aria-pressed="true">Docent</button><button type="button" data-role-btn="student" aria-pressed="false">Student</button></div></div>
           <label>Les<select data-lesson aria-label="Les"></select></label>
         </header>
         <nav class="nb-views" aria-label="Weergave studentenschrift"><button type="button" data-view="week" aria-pressed="true">Weekplan</button><button type="button" data-view="targets" aria-pressed="false">Weekdoelen</button><button type="button" data-view="skills" aria-pressed="false">Vaardigheden</button></nav>

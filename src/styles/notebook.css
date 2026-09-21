@@ -14,8 +14,18 @@
 .notebook h4 { font-size: 1rem; }
 .notebook h5 { font-size: .95rem; }
 .notebook p { text-wrap: pretty; }
-.nb-notice { display: flex; flex-wrap: wrap; gap: .2rem 1rem; padding: 1rem 1.4rem; font-size: .78rem; border-bottom: 1px solid var(--rule); }
-.nb-notice span { color: var(--muted); }
+/* Openen in vijf seconden: één zin over wat dit is, drie stappen om het te proberen. */
+.nb-notice { display: grid; gap: .7rem; padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--rule); }
+.nb-notice > p { font-size: .78rem; color: var(--muted); }
+.nb-notice > p strong { color: var(--ink); }
+.nb-guide { display: flex; flex-wrap: wrap; gap: .3rem 2rem; list-style: none; margin: 0; padding: 0; font-size: .95rem; font-weight: 500; }
+.nb-guide b { margin-right: .5rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+.nb-roles > span { display: block; font-size: .78rem; font-weight: 600; }
+.nb-roles > div { display: inline-flex; margin-top: .3rem; border: 1px solid #8c9488; border-radius: 4px; overflow: hidden; }
+.nb-roles button { min-height: 44px; min-width: 5.5rem; padding: .5rem 1rem; border: 0; background: #fff; color: var(--ink); font: 500 .9rem var(--sans); cursor: pointer; }
+.nb-roles button + button { border-left: 1px solid #8c9488; }
+.nb-roles button[aria-pressed=true] { background: var(--ink); color: var(--paper); }
+.nb-roles button:not([aria-pressed=true]):hover { background: var(--sage); }
 .nb-toolbar { display: flex; align-items: end; flex-wrap: wrap; gap: 1.25rem; padding: 1.4rem; border-bottom: 1px solid var(--rule); }
 .nb-toolbar > div { flex: 1; min-width: 180px; }
 .nb-toolbar p { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
@@ -104,3 +114,12 @@
   .notebook input:not([type=checkbox]), .notebook textarea, .notebook select { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .notebook-disclosure > summary svg { transition: none; } }
+
+/* Oefenstappen klappen per weekdoel in; het eerste weekdoel staat open. */
+.nb-steps-box > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 44px; cursor: pointer; list-style: none; }
+.nb-steps-box > summary::-webkit-details-marker { display: none; }
+.nb-steps-box > summary::after { content: ''; width: 9px; height: 9px; margin-right: .3rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform .2s; flex: none; }
+.nb-steps-box[open] > summary::after { transform: rotate(-135deg) translateY(-2px); }
+.nb-steps-box > .nb-steps { margin-top: 0; }
+@media (max-width: 680px) { .nb-guide { flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .nb-steps-box > summary::after { transition: none; } }

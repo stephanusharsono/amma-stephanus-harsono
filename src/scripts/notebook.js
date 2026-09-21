@@ -98,7 +98,7 @@ if (host) {
     const resultCheck = el('input', { type: 'checkbox', 'data-goal-achieved': '', 'aria-label': `Weekdoel behaald: ${goal.piece}` });
     resultCheck.checked = goal.achieved; resultCheck.disabled = !editable();
     resultLabel.append(resultCheck, el('span', { 'data-goal-result': '' })); row.append(resultLabel);
-    row.append(el('span', { class: 'nb-goal-status', 'data-status': '' }));
+    let extras = row;
     if (view === 'week') {
       const steps = el('ol', { class: 'nb-steps' });
       goal.steps.forEach((step, i) => {
@@ -108,10 +108,15 @@ if (host) {
         checkbox.checked = step.achieved; checkbox.disabled = !editable();
         const text = el('span'); text.append(el('span', { class: 'nb-step-text' }, `${i + 1}. ${step.text}`), el('small', {}, step.skill));
         label.append(checkbox, text); item.append(label); steps.append(item);
-      }); row.append(steps);
-    } else row.append(el('button', { type: 'button', class: 'nb-text-button', 'data-show-goal': goal.id }, 'Bekijk oefenstappen'));
-    row.append(notesDetails(goal, index));
-    if (editable() && role === 'teacher') row.append(goalEditor(goal, index));
+      });
+      const box = el('details', { class: 'nb-steps-box', ...(index === 0 ? { open: '' } : {}) });
+      box.append(el('summary', { class: 'nb-goal-status', 'data-status': '' }), steps); row.append(box); extras = box;
+    } else {
+      row.append(el('span', { class: 'nb-goal-status', 'data-status': '' }));
+      row.append(el('button', { type: 'button', class: 'nb-text-button', 'data-show-goal': goal.id }, 'Bekijk oefenstappen'));
+    }
+    extras.append(notesDetails(goal, index));
+    if (editable() && role === 'teacher') extras.append(goalEditor(goal, index));
     return row;
   }
   function renderSkills() {
@@ -128,7 +133,8 @@ if (host) {
     });
   }
   function render() {
-    $('[data-role]').value = role;
+    host.querySelectorAll('[data-role-btn]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.roleBtn === role)));
+    $('[data-lesson]').closest('label').hidden = state.lessons.length < 2;
     $('[data-lesson]').replaceChildren(...state.lessons.map((item, index) => {
       const option = el('option', { value: String(index) }, `${item.title}${index === state.lessons.length - 1 ? ' · actief' : ''}`); option.selected = index === selected; return option;
     }));
@@ -153,7 +159,6 @@ if (host) {
   }
   host.addEventListener('change', event => {
     const node = event.target;
-    if (node.matches('[data-role]')) { role = node.value; view = role === 'teacher' ? 'targets' : 'week'; render(); return; }
     if (node.matches('[data-lesson]')) { selected = Number(node.value); render(); return; }
     if (!editable()) return;
     if (node.matches('[data-goal-achieved]')) {
@@ -191,6 +196,8 @@ if (host) {
     $('[data-goals]').lastElementChild.querySelector('input').focus();
   }, options);
   host.addEventListener('click', event => {
+    const roleButton = event.target.closest('[data-role-btn]');
+    if (roleButton) { role = roleButton.dataset.roleBtn; view = role === 'teacher' ? 'targets' : 'week'; render(); return; }
     const viewButton = event.target.closest('[data-view]');
     if (viewButton) { view = viewButton.dataset.view; render(); return; }
     const show = event.target.closest('[data-show-goal]');
@@ -234,7 +241,7 @@ if (host) {
   $('[data-confirm-reset]').addEventListener('click', () => {
     clearTimeout(saveTimer); state = seedNotebook(); selected = 0; role = 'teacher'; view = 'week';
     $('[data-reset-confirm]').hidden = true; $('[data-add-form]').reset(); $('[data-form-error]').hidden = true;
-    render(); persist('Oorspronkelijk voorbeeld hersteld.'); $('[data-role]').focus();
+    render(); persist('Oorspronkelijk voorbeeld hersteld.'); $('[data-role-btn="teacher"]').focus();
   }, options);
   addEventListener('pagehide', () => { if (saveTimer) { clearTimeout(saveTimer); try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {} } }, options);
   render(); $('.nb-app').hidden = false; announce(initialMessage);
