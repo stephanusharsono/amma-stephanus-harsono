@@ -39,8 +39,8 @@ export const hero = {
 export const onderzoek = {
   titel: 'Nieuwsgierig, ook naast de piano.',
   tekst: 'Mijn masterscriptie verbond podiumpresentatie en muziekcognitie. Die ontmoeting van muziekpraktijk en onderzoek trekt mij ook in AMMA.',
-  citaat: 'Bijna meer boeken dan partituren.',
-  toelichting: 'Thuis lees ik over menselijk gedrag, communicatie en organisatie.',
+  citaat: 'Bijna evenveel boeken als partituren.',
+  toelichting: 'Thuis lees ik over communicatie, motivatie en organisatie. Mijn favoriet: The Culture Map van Erin Meyer.',
 };
 
 export const ervaring = {
