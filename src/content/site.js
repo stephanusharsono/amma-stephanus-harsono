@@ -1,7 +1,7 @@
 // Beknopt overzicht voor de AMMA-interessepeiling. Bron: motivatiebrief v36.
 // De volledige brief staat in brief.js; de AMMA-motivatie is op verzoek aangescherpt.
 // De RCO-bestanden zijn alleen stijlreferenties.
-export const siteUrl = '';
+export const siteUrl = 'https://amma-stephanus-harsono.vercel.app';
 
 // Downloads verschijnen vanzelf zodra het pdf-bestand in public/documenten/ staat.
 // Zo kan er nooit een dode downloadlink op de site komen te staan.
