@@ -117,9 +117,9 @@ p { text-wrap: pretty; }
 .experience-row { position: relative; display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 1.5rem clamp(2rem, 6vw, 5.5rem); padding-block: clamp(2.4rem, 5.5vw, 4rem); border-top: 1px solid var(--rule); }
 .experience-row::before { content: ''; position: absolute; top: -1px; left: 0; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease-out); }
 .experience-row.is-active::before { transform: scaleX(1); }
-.scene-label { font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
-.scene-figure { margin-top: 1rem; font: 400 clamp(2.6rem, 5vw, 4.1rem)/1 var(--serif); letter-spacing: -.05em; color: var(--accent); }
-.scene-figure span { display: block; margin-top: .75rem; font: 400 .8rem/1.45 var(--sans); letter-spacing: 0; color: var(--muted); max-width: 16ch; }
+.experience-row .scene-label { font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+.experience-row .scene-figure { margin-top: 1rem; font: 400 clamp(2.1rem, 3.3vw, 3.2rem)/1 var(--serif); letter-spacing: -.05em; color: var(--accent); white-space: nowrap; }
+.scene-figure span { display: block; margin-top: .75rem; font: 400 .8rem/1.45 var(--sans); letter-spacing: 0; color: var(--muted); max-width: 16ch; white-space: normal; }
 .scene-bron { margin-top: 1.4rem; }
 .brieflink { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; font-size: .88rem; font-weight: 600; color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .35em; text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent); transition: text-decoration-color .2s; }
 .brieflink:hover { text-decoration-color: var(--accent); }
@@ -197,6 +197,7 @@ p { text-wrap: pretty; }
 .licht .application, .licht .site-header nav a, .licht .site-footer { color: var(--muted); }
 .licht .site-header nav a:hover, .licht .site-header nav a[aria-current] { color: var(--ink); border-color: var(--accent); }
 .licht a { color: var(--accent); }
+.licht .skip { color: var(--paper); }
 .brief-kop { padding: clamp(2rem, 5vw, 3.2rem) var(--gutter) 0; }
 .brief-kop > div { max-width: min(41rem, 70ch); margin-inline: auto; }
 .brief-acties { display: flex; align-items: center; flex-wrap: wrap; gap: 0 1.6rem; }
@@ -272,7 +273,7 @@ p { text-wrap: pretty; }
   .experience-row { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
   .connection svg { height: 3.2rem; }
   .connection-institutions, .connection-name { font-size: .66rem; }
-  .scene-figure { margin-top: .4rem; font-size: clamp(2.4rem, 13vw, 3.4rem); }
+  .experience-row .scene-figure { margin-top: .4rem; font-size: clamp(2.4rem, 13vw, 3.4rem); }
   .scene-figure span { max-width: none; }
   .experience-row h3 { max-width: none; }
   .research-inner, .contact-inner { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
