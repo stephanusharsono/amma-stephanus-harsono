@@ -7,7 +7,7 @@ const bronnen = Object.fromEntries(ervaring.onderdelen.filter((o) => o.briefAnke
 const link = siteUrl ? `: ${siteUrl}` : '';
 const tekst = alineas.map((a) => a.replace('{{LINK}}', link));
 ---
-<Base huidig="brief" licht={true} title={`${briefPagina.titel} — Stephanus Harsono`}>
+<Base huidig="brief" licht={true} title={`${briefPagina.titel} — Stephanus Harsono`} description={briefPagina.beschrijving}>
   <div class="brief-kop">
     <div>
       <a class="terug" href="/">← {briefPagina.terug}</a>

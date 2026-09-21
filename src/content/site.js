@@ -24,7 +24,7 @@ export const documenten = {
 
 export const meta = {
   titel: 'Stephanus Harsono — interesse in Coördinator AMMA',
-  beschrijving: 'Studenten verder helpen, zorgvuldig organiseren en nieuwsgierig blijven. Mijn motivatie voor de coördinatie van AMMA.',
+  beschrijving: 'Aanvulling op mijn motivatiebrief voor de interne interessepeiling Coördinator AMMA: mijn ervaring, de volledige brief en mijn cv.',
 };
 
 export const hero = {
@@ -46,6 +46,8 @@ export const onderzoek = {
 
 export const ervaring = {
   titel: 'Zo werk ik.',
+  // Twee stemmen, zoals de titel bovenaan: wat de vacature vraagt, en waar ik dat al deed.
+  intro: ['Vier taken uit de vacature,', 'en waar ik ze al heb gedaan.'],
 
   onderdelen: [
     {
@@ -105,6 +107,7 @@ export const briefPagina = {
   ondertitel: 'Interne interessepeiling Coördinator AMMA',
   printKnop: 'Print de brief',
   pdfKnop: 'Download de brief (pdf)',
+  beschrijving: 'Mijn motivatiebrief voor de interne interessepeiling Coördinator AMMA, met per voorbeeld de weg terug naar het overzicht.',
   terug: 'Terug naar het overzicht',
   printKop: 'Motivatiebrief Coördinator AMMA — Stephanus Harsono',
 };

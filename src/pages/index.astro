@@ -33,7 +33,10 @@ import { hero, onderzoek, ervaring, contact, dateline, documenten, cvBeschikbaar
   <section class="experience container" id="ervaring" aria-labelledby="ervaring-kop">
     <div class="experience-layout">
       <div class="experience-guide">
-        <h2 id="ervaring-kop">{ervaring.titel}</h2>
+        <div class="experience-head">
+          <h2 id="ervaring-kop">{ervaring.titel}</h2>
+          <p class="experience-lede"><span>{ervaring.intro[0]}</span><em>{ervaring.intro[1]}</em></p>
+        </div>
         <Connection />
         <nav class="chapter-nav" aria-label="Praktijkvoorbeelden">
           {ervaring.onderdelen.map((item) => <a href={`#${item.id}`} data-chapter={item.id}>{item.label}<span class="chapter-marker" aria-hidden="true"></span></a>)}
