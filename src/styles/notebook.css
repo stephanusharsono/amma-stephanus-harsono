@@ -1,6 +1,6 @@
 .notebook-section { padding-block: 4rem; border-top: 1px solid var(--rule); }
 .notebook-intro { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 3rem; margin-bottom: 2rem; }
-.notebook-intro h2 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.12; }
+.notebook-intro h2 { font-size: var(--h2-section); line-height: 1.12; }
 .notebook-intro h2 em { color: var(--leaf); }
 .notebook-intro > p { max-width: 47ch; font-size: .95rem; }
 .notebook-disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.4rem; border: 1px solid var(--rule); background: var(--sage); color: var(--ink); font-size: 1rem; font-weight: 600; cursor: pointer; list-style: none; }
