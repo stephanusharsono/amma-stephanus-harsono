@@ -30,6 +30,10 @@ const nav = [
         setTimeout(function () { if (!r.dataset.motion) r.classList.remove('js'); }, 2500);
       })();
     </script>
+    <script>
+      import { inject } from '@vercel/analytics';
+      inject();
+    </script>
   </head>
   <body class={licht ? 'licht' : ''}>
     <a class="skip" href="#inhoud">Naar de inhoud</a>
