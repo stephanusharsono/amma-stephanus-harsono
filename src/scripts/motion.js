@@ -9,7 +9,7 @@ const headerLinks = [...document.querySelectorAll('.site-header nav a[href^="#"]
 const contact = document.querySelector('#contact');
 const guide = document.querySelector('.experience-guide');
 const root = document.documentElement;
-const reveals = [...document.querySelectorAll('.scene-figure, .portrait-window, .connection')];
+const reveals = [...document.querySelectorAll('.scene-figure, .portrait-window, .connection, .book-statement')];
 root.dataset.motion = 'on';
 const entrances = [];
 let frame = 0;
@@ -53,10 +53,11 @@ function update() {
       if (i === phase) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
-    if (phase >= 0 && !reduce.matches) {
+    const point = guide.querySelector('.connection-point');
+    if (phase >= 0 && point && !reduce.matches) {
       pulse?.cancel();
-      pulse = guide.querySelector('.connection-point').animate(
-        [{ r: '4px' }, { r: '7px', offset: .4 }, { r: '4px' }],
+      pulse = point.animate(
+        [{ strokeWidth: '7px' }, { strokeWidth: '12px', offset: .4 }, { strokeWidth: '7px' }],
         { duration: 500, easing: 'cubic-bezier(.16,1,.3,1)' }
       );
     }
