@@ -95,7 +95,7 @@ if (!reduce.matches && scrollY < 100) {
   entrances.push(first.animate([{ transform: 'translateX(-22px)', opacity: .65 }, { transform: 'translateX(0)', opacity: 1 }], options));
   entrances.push(second.animate([{ transform: 'translateX(22px)', opacity: .65 }, { transform: 'translateX(0)', opacity: 1 }], { ...options, delay: 80 }));
   entrances.push(document.querySelector('.portrait-window').animate(
-    [{ clipPath: 'inset(0 12% 0 12%)' }, { clipPath: 'inset(0 0 0 0)' }], options
+    [{ clipPath: 'inset(0 0 0 16%)' }, { clipPath: 'inset(0 0 0 0)' }], options
   ));
 }
 

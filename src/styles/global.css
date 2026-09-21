@@ -53,7 +53,7 @@ p { text-wrap: pretty; }
 .band a.primary-link { color: var(--field-deep); }  /* anders wint .band a en wordt de knoptekst oker-op-oker */
 .band a.primary-link:hover { color: var(--metal); }
 .band :focus-visible { outline-color: var(--metal); }
-.hero-band { padding-block: clamp(2.6rem, 6vw, 5rem); }
+.hero-band { position: relative; overflow: hidden; padding-block: clamp(2.6rem, 6vw, 5rem); --photo: clamp(300px, 40vw, 620px); }
 .skip:focus { top: .8rem; }
 
 /* ---------- header ---------- */
@@ -71,8 +71,10 @@ p { text-wrap: pretty; }
 .site-header nav a:hover, .site-header nav a[aria-current] { color: var(--ink); border-color: var(--accent); }
 
 /* ---------- hero ---------- */
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 30%); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
-.hero h1 { font-size: clamp(2.9rem, 7vw, 6.4rem); line-height: .99; }
+/* Het portret loopt tot de rand van het scherm en over de volle hoogte van de band; de tekst blijft links. */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; min-height: clamp(26rem, 52vh, 38rem); }
+.hero-copy { max-width: min(52rem, calc(100vw - var(--photo) - var(--gutter) - 2rem)); }
+.hero h1 { font-size: clamp(2.9rem, 5vw, 5.4rem); line-height: .99; }
 .hero h1 > * { display: block; }
 .hero h1 em { font-style: italic; font-weight: 400; color: var(--metal); }
 .hero-intro { max-width: 44ch; margin-top: 2rem; font-size: 1.05rem; line-height: 1.72; color: #ece9f2; }
@@ -84,10 +86,10 @@ p { text-wrap: pretty; }
 .text-link { display: inline-flex; min-height: 44px; gap: .6rem; align-items: center; font-size: .86rem; padding-block: .65rem; font-weight: 600; }
 .text-link:hover svg { transform: translateX(3px); }
 
-.portrait { padding-top: 0; }
-.portrait-window { overflow: hidden; aspect-ratio: 3 / 4; background: var(--field-deep); }
-.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(.86) contrast(1.02); }
-.portrait figcaption { display: flex; flex-direction: column; gap: .2rem; padding-top: 1rem; border-top: 1px solid var(--rule-dark); margin-top: 1rem; }
+.portrait { position: absolute; top: 0; right: 0; bottom: 0; width: var(--photo); }
+.portrait-window { overflow: hidden; height: 100%; background: var(--field-deep); }
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; filter: saturate(.86) contrast(1.02); }
+.portrait figcaption { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: .2rem; padding: 3.5rem 1.6rem 1.4rem; background: linear-gradient(to top, rgba(23, 11, 49, .86), rgba(23, 11, 49, 0)); }
 .portrait strong { font: 400 1.15rem/1.4 var(--serif); }
 .portrait figcaption span { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--mist); }
 
@@ -244,12 +246,19 @@ p { text-wrap: pretty; }
 .printkop { display: none; }
 
 @media (max-width: 900px) {
-  .hero { grid-template-columns: minmax(0, 1fr) 240px; }
   .research-inner { gap: 2rem; }
   .experience-guide { grid-template-columns: minmax(0, 1fr); }
   .experience-guide h2 { max-width: none; }
   .experience-head { flex-direction: column; align-items: flex-start; gap: .5rem; }
   .experience-lede { padding-bottom: 0; }
+}
+@media (max-width: 860px) {
+  .hero-band { padding-bottom: 0; }
+  .hero { min-height: 0; padding-block: 0; }
+  .hero-copy { max-width: none; padding-bottom: 2.4rem; }
+  .hero h1 { font-size: clamp(2.6rem, 8vw, 4.4rem); }
+  .portrait { position: relative; inset: auto; width: auto; margin-inline: calc(var(--gutter) * -1); }
+  .portrait-window { height: auto; aspect-ratio: 1 / 1; }
 }
 @media (max-width: 680px) {
   body { font-size: 16px; }
@@ -258,12 +267,8 @@ p { text-wrap: pretty; }
   .application { margin-left: auto; font-size: .64rem; }
   .site-header nav { flex-basis: 100%; margin: 0; }
   .site-header nav ul { gap: 1.6rem; }
-  .hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; padding-block: 2.4rem 3rem; }
   .hero h1 { font-size: clamp(2.4rem, 10vw, 3.6rem); }
   .hero-intro { margin-top: 1.3rem; font-size: 1rem; }
-  .portrait { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 1.2rem; align-items: center; }
-  .portrait-window { aspect-ratio: 4 / 5; }
-  .portrait figcaption { padding-top: 0; border: 0; margin: 0; }
   .experience-row { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
   .connection svg { height: 3.2rem; }
   .connection-institutions, .connection-name { font-size: .66rem; }
