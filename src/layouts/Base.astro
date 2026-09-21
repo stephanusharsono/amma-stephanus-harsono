@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
 import { meta, hero, cvBeschikbaar, cvBestand, voet } from '../content/site.js';
 const { title = meta.titel, description = meta.beschrijving, huidig = 'home', licht = false } = Astro.props;
 const p = huidig === 'brief' ? '/' : '';
@@ -44,5 +45,6 @@ const nav = [
     </header>
     <main id="inhoud" tabindex="-1"><slot /></main>
     <footer class="site-footer container"><span>{voet.naam}</span><span>{voet.plaats}</span></footer>
+    <Analytics />
   </body>
 </html>
