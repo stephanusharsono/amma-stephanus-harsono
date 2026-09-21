@@ -90,8 +90,8 @@ export const ervaring = {
 
 export const contact = {
   knop: 'Mail mij',
-  titel: 'Ik licht het graag toe in een gesprek.',
-  tekst: 'Het CvA ken ik sinds 2013 als student en sinds 2023 als medewerker. Ik ben er viereneenhalve dag per week; 0,1 fte voor AMMA past naast mijn aanstelling.',
+  titel: 'Wat kan ik nog toelichten?',
+  tekst: 'Over de brief, de voorbeelden of hoe ik de taken in de vacaturetekst zou aanpakken. Ik ben viereneenhalve dag per week op het CvA; 0,1 fte voor AMMA past naast mijn aanstelling.',
   email: 'stephanus.harsono@ahk.nl',
   telefoon: '+31 (0)6 36 48 70 53',
   telefoonHref: '+31636487053',
