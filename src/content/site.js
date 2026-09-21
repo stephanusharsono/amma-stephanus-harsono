@@ -30,8 +30,9 @@ export const meta = {
 export const hero = {
   naam: 'Stephanus Harsono',
   titel: ['Twee instellingen.', 'Eén aanspreekpunt.'],
-  introductie: 'Ik help studenten vooruit als docent en correpetitor aan het CvA. Bij AMMA wil ik de praktische zaken tussen CvA en UvA regelen. Zodat studenten ruimte hebben voor de inhoud.',
-  procedure: 'Interesse in Coördinator AMMA',
+  introductie: 'Ik help studenten vooruit als docent en correpetitor aan het CvA. Bij AMMA wil ik de praktische zaken tussen CvA en UvA regelen, zodat studenten ruimte hebben voor de inhoud.',
+  kop: 'Interne interessepeiling',
+  procedure: 'Coördinator AMMA',
   rol: 'Docent · Correpetitor · Voorzitter AR/OC',
   actie: 'Ontdek mijn aanpak',
 };
@@ -40,7 +41,7 @@ export const onderzoek = {
   titel: 'Nieuwsgierig, ook naast de piano.',
   tekst: 'Mijn masterscriptie verbond podiumpresentatie en muziekcognitie. Die ontmoeting van muziekpraktijk en onderzoek trekt mij ook in AMMA.',
   citaat: 'Bijna evenveel boeken als partituren.',
-  toelichting: 'Thuis lees ik over communicatie, motivatie en organisatie. Mijn favoriet: The Culture Map van Erin Meyer.',
+  toelichting: 'Thuis lees ik over communicatie, motivatie en organisatie. Mijn favoriet: The Culture Map van Erin Meyer, over culturele verschillen in samenwerking.',
 };
 
 export const ervaring = {
@@ -51,18 +52,18 @@ export const ervaring = {
       id: 'studenten',
       label: 'Studenten',
       briefAnker: 'alinea-1',
-      briefLink: 'Lees hoe ik dit in mijn brief beschrijf',
+      briefLink: 'Lees de passage over studentbegeleiding',
       anker: '±50',
       ankerToelichting: 'studenten per jaar',
       titel: 'Mijn deur staat open.',
-      tekst: 'Voor circa vijftig studenten per jaar, ook via Teams. Ik help ze verder en houd hun voortgang systematisch bij.',
+      tekst: 'Ik ben het eerste aanspreekpunt voor circa vijftig studenten per jaar, ook via Teams. Ik help ze verder en houd hun voortgang systematisch bij.',
     },
     {
       id: 'administratie',
       label: 'Administratie',
       briefAnker: 'alinea-2',
-      briefLink: 'Lees de passage over het secretariaat',
-      anker: '2021—2025',
+      briefLink: 'Lees de passage over mijn administratieve werk',
+      anker: '2021–2025',
       ankerToelichting: 'secretaris ondernemingsraad',
       titel: 'Overzicht, tot in de details.',
       tekst: 'Post, agenda, notulen en deadlines: mijn werk als OR-secretaris bij Platform C (2021–2025). Via de AR/OC ken ik ook de OER, studiepunten en toetsing.',
@@ -73,7 +74,7 @@ export const ervaring = {
       briefAnker: 'alinea-4',
       briefLink: 'Lees de passage over de moduleherziening',
       anker: '19 → 1',
-      ankerToelichting: '19 docenten, 1 module',
+      ankerToelichting: 'hoofdvakdocenten, 2025',
       titel: 'Negentien docenten. Eén gedragen module.',
       tekst: 'Ik leidde de herziening van de hoofdinstrumentmodule. Voor de overgangstentamens stem ik af met het studiesecretariaat.',
     },
@@ -83,7 +84,7 @@ export const ervaring = {
       briefAnker: 'alinea-6',
       briefLink: 'Lees de passage over de open dag',
       titel: 'Helder vertellen. Goed organiseren.',
-      tekst: 'De ODM-open dag: draaiboek, presentatiemateriaal en zelf presenteren, in afstemming met Communicatie. Ingewikkelde informatie begrijpelijk maken doe ik dagelijks.',
+      tekst: 'Voor de ODM-open dag maakte ik het draaiboek en het presentatiemateriaal, in afstemming met Communicatie, en presenteerde ik zelf. Ingewikkelde informatie begrijpelijk maken doe ik dagelijks.',
     },
   ],
 };
@@ -103,6 +104,7 @@ export const briefPagina = {
   onderwerp: 'Motivatiebrief Coördinator AMMA',
   ondertitel: 'Interne interessepeiling Coördinator AMMA',
   printKnop: 'Print de brief',
+  pdfKnop: 'Download de brief (pdf)',
   terug: 'Terug naar het overzicht',
   printKop: 'Motivatiebrief Coördinator AMMA — Stephanus Harsono',
 };

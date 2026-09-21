@@ -12,7 +12,7 @@ const tekst = alineas.map((a) => a.replace('{{LINK}}', link));
     <div>
       <a class="terug" href="/">← {briefPagina.terug}</a>
       <div class="brief-acties">
-        {briefBeschikbaar && <a class="pdf-link" href={briefBestand} download>{documenten.brief}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m-5-5 5 5 5-5M5 20h14"/></svg></a>}
+        {briefBeschikbaar && <a class="pdf-link" href={briefBestand} download>{briefPagina.pdfKnop}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m-5-5 5 5 5-5M5 20h14"/></svg></a>}
         <button class="printknop" type="button" id="print">{briefPagina.printKnop}</button>
       </div>
     </div>
