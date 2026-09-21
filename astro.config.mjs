@@ -1,2 +1,11 @@
 import { defineConfig } from 'astro/config';
-export default defineConfig({ trailingSlash: 'never', build: { format: 'file' } });
+import vercel from '@astrojs/vercel';
+
+export default defineConfig({
+  trailingSlash: 'never',
+  build: { format: 'file' },
+  output: 'server',
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  })
+});
