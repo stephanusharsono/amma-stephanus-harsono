@@ -13,6 +13,7 @@ export const seedNotebook = () => ({
         target: 'Speel de eerste frase met een herkenbare baslijn en melodie.',
         steps: [
           step('step-1', 'Luister naar de maatsoort en voel waar de eerste tel valt.', 'Ritme & groove', true),
+          step('step-11', 'Zoek de leadsheet erbij en noteer de toonsoort in je aantekeningen.', 'Audiëren'),
           step('step-2', 'Baken één korte frase af: bijvoorbeeld twee of vier maten.', 'Structuur & frasering'),
           step('step-3', 'Luister alleen naar de bas. Hoor de lijn in je hoofd, zing hem en speel hem daarna.', 'Audiëren'),
           step('step-4', 'Doe hetzelfde met de melodie. Voeg daarna bas en melodie samen.', 'Stemvoering'),
